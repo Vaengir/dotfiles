@@ -6,6 +6,8 @@ alias la="ll -a"
 
 # Shortcuts for ease of use
 alias vim="nvim"
+alias vi="vim"
+alias v="vi"
 alias s="sudo shutdown now"
 alias uni="ssh wi21139@login.dhbw-stuttgart.de"
 alias c="clear"
