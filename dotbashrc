@@ -135,6 +135,9 @@ export PATH="/home/weiberle/.local/bin:$PATH"
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
+# Allow touchpad tapping to click
+xinput set-prop "$(xinput list --name-only | grep -i touch)" "libinput Tapping Enabled" 1
+
 # Set keyboard layout
 setxkbmap eu
 
