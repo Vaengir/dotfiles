@@ -147,3 +147,5 @@ setxkbmap eu
 eval "$(starship init bash)"
 
 neofetch
+
+# test2
