@@ -137,6 +137,7 @@ export LANG=C.UTF-8
 
 # Allow touchpad tapping to click
 xinput set-prop "$(xinput list --name-only | grep -i touch)" "libinput Tapping Enabled" 1
+clear
 
 # Set keyboard layout
 setxkbmap eu
