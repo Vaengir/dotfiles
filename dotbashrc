@@ -141,7 +141,11 @@ setxkbmap eu
 # Source autojump to work properly
 . /usr/share/autojump/autojump.sh
 
+# Cargo Setup
 . "$HOME/.cargo/env"
+
+# Go Setup
+export PATH=$PATH:/usr/local/go/bin
 
 # Starship setup
 eval "$(starship init bash)"
