@@ -38,7 +38,13 @@ alias xamppLogs="cat /opt/lampp/logs/php_error_log"
 alias h="history | grep"
 
 # Some git functions
+alias gst="git status"
+alias gp="git push"
 gcom() {
+	git add "$1"
+	git commit -m "$2"
+	}
+gcoma() {
 	git add .
 	git commit -m "$1"
 	}
