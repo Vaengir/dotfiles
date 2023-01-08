@@ -142,7 +142,7 @@ setxkbmap eu
 # . /usr/share/autojump/autojump.sh
 
 # Zoxide setup
-eval "$(zoxide init bash)"
+eval "$(zoxide init bash --cmd j)"
 
 # Cargo Setup
 . "$HOME/.cargo/env"
