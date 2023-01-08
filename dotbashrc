@@ -139,7 +139,10 @@ export LANG=C.UTF-8
 setxkbmap eu
 
 # Source autojump to work properly
-. /usr/share/autojump/autojump.sh
+# . /usr/share/autojump/autojump.sh
+
+# Zoxide setup
+eval "$(zoxide init bash)"
 
 # Cargo Setup
 . "$HOME/.cargo/env"
