@@ -153,4 +153,8 @@ export PATH=$PATH:/usr/local/go/bin
 # Starship setup
 eval "$(starship init bash)"
 
+# Allow spelling mistakes
+shopt -s cdspell
+
+# Run neofetch on startup
 neofetch
