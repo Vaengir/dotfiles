@@ -159,5 +159,9 @@ eval "$(starship init bash)"
 # Allow spelling mistakes
 shopt -s cdspell
 
+# Fzf setup
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Run neofetch on startup
 neofetch
+
