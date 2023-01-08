@@ -67,3 +67,6 @@ $endif
 # allow ctrl + backslash to delete last word
 "\C-h": backward-kill-word
 $endif
+
+# Turn Bell of
+set bell-style none
