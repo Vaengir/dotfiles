@@ -1,0 +1,64 @@
+########################
+##                    ##
+##  Default Settings  ##
+##                    ##
+########################
+
+# use dotbashrc file
+set-option -g default-command "/bin/bash"
+
+# Start numbering at 1
+set -g base-index 1
+
+# Allows for faster key repetition
+set -s escape-time 0
+
+# Colors
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ",*256col*:Tc"
+
+# Mouse control
+set -g mouse on
+
+# Create Space between Tmux Status Bar and Prompt
+set-window-option -g pane-border-status bottom
+
+########################
+##                    ##
+##       Keymaps      ##
+##                    ##
+########################
+
+# easy reload config
+bind-key r source-file ~/.tmux.conf \; display message "~/.tmux.conf reloaded."
+
+# Change C-b to C-o
+unbind C-b
+set-option -g prefix C-o
+bind-key C-o last-window
+
+# Set window split
+bind-key v split-window -h
+bind-key b split-window
+
+# hjkl pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+########################
+##                    ##
+##       Plugins      ##
+##                    ##
+########################
+
+# List of Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'arcticicestudio/nord-tmux'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
