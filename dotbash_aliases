@@ -29,6 +29,12 @@ alias ..5="cd ../../../../.."
 # Go to old Directory
 alias ld='cd -'
 
+# Tmux Shortcuts
+alias ta="tmux at"
+alias td="tmux detach"
+alias tl="tmux ls"
+alias tks="tmux kill-server"
+
 # Xampp Shortcuts
 alias xamppControl="sudo /opt/lampp/lampp"
 alias xamppManage="cd /opt/lampp; sudo ./manager-linux-x64.run; cd"
