@@ -22,6 +22,7 @@ set -g mouse on
 
 # Create Space between Tmux Status Bar and Prompt
 set-window-option -g pane-border-status bottom
+set-window-option -g pane-border-format ''
 
 ########################
 ##                    ##
@@ -30,7 +31,7 @@ set-window-option -g pane-border-status bottom
 ########################
 
 # easy reload config
-bind-key r source-file ~/.tmux.conf \; display message "~/.tmux.conf reloaded."
+bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 
 # Change C-b to C-o
 unbind C-b
