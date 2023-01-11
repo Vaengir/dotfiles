@@ -29,6 +29,9 @@ alias ..5="cd ../../../../.."
 # Go to old Directory
 alias ld='cd -'
 
+# mkdir alias
+alias mkdir="mkdir -p"
+
 # Tmux Shortcuts
 alias ta="tmux at"
 alias td="tmux detach"
