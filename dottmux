@@ -20,6 +20,16 @@ set -ga terminal-overrides ",*256col*:Tc"
 # Mouse control
 set -g mouse on
 
+# Restore Vim sessions
+set -g @resurrect-strategy-vim 'session'
+# Restore Nvim sessions
+set -g @resurrect-strategy-nvim 'session'
+# Restore Panes
+set -g @resurrect-capture-pane-contents 'on'
+# Restore last saved environment (automatically)
+set -g @continuum-restore 'on'
+set -g @continuum-boot 'on'
+
 # Create Space between Tmux Status Bar and Prompt
 set-window-option -g pane-border-status bottom
 set-window-option -g pane-border-format ''
@@ -58,8 +68,9 @@ bind l select-pane -R
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'arcticicestudio/nord-tmux'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
