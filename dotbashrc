@@ -103,9 +103,6 @@ export LANG=C.UTF-8
 # Set keyboard layout
 setxkbmap eu
 
-# Source autojump to work properly
-# . /usr/share/autojump/autojump.sh
-
 # Zoxide setup
 eval "$(zoxide init bash --cmd j)"
 
