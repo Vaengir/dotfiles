@@ -13,7 +13,7 @@ alias uni="ssh wi21139@login.dhbw-stuttgart.de"
 alias c="clear"
 alias rwlan="sudo systemctl restart NetworkManager"
 alias taskManager="htop"
-alias conOnePlus="nmcli --ask connection up OnePlus\ 7T"
+alias addWifi="sudo nmcli --ask device wifi connect"
 
 # Directory aliases
 alias home="cd ~"
