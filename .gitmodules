@@ -1,3 +1,6 @@
 [submodule "awesome/.config/awesome"]
 	path = awesome/.config/awesome
 	url = https://github.com/Weiberle17/AwesomeWM.git
+[submodule "nvim/.config/nvim"]
+	path = nvim/.config/nvim
+	url = https://github.com/Weiberle17/nvim.conf.git
