@@ -1,0 +1,31 @@
+configuration {
+  font: "Hack Nerd Font 10";
+  line-margin: 15;
+
+  display-ssh:    " ";
+  display-run:    " ";
+  display-drun:   " ";
+  display-window: " ";
+  display-combi:  " ";
+  show-icons:     true;
+
+  modi: "drun,run,combi";
+}
+
+
+@theme "~/.config/rofi/nord.rasi"
+
+listview {
+  lines: 6;
+  columns: 2;
+}
+
+window {
+	width: 30%;
+}
+
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
