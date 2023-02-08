@@ -100,9 +100,6 @@ export PATH="/home/weiberle/.local/bin:$PATH"
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-# Set keyboard layout
-setxkbmap eu
-
 # Zoxide setup
 eval "$(zoxide init bash --cmd j)"
 
