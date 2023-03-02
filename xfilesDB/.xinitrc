@@ -21,7 +21,7 @@ xinput set-prop "$(xinput list --name-only | grep -i touch)" "libinput Tapping E
 # Update all repos
 g pull ~/git/ &
 # Monitor setup
-xrandr --output Displayport-1 --primary --auto
-xrandr --output Displayport-2 --right-of Displayport-1 --rotate right --auto
+xrandr --output Displayport-1 --primary --auto &
+xrandr --output Displayport-2 --right-of Displayport-1 --rotate right --auto &
 # Run Awesome
 exec /usr/bin/awesome
