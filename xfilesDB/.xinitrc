@@ -12,9 +12,6 @@ xset s noblank &
 # Keyboard Layout
 setxkbmap -layout eu -option caps:none &
 xrdb -load $HOME/.Xdefaults &
-# Monitor setup
-xrandr --output Displayport-1 --primary --auto
-xrandr --output Displayport-2 --right-of Displayport-1 --rotate right --auto
 # Handler for removeable Volumes
 ivman &
 # Run Compositor
@@ -23,5 +20,8 @@ picom &
 xinput set-prop "$(xinput list --name-only | grep -i touch)" "libinput Tapping Enabled" 1 &
 # Update all repos
 g pull ~/git/ &
+# Monitor setup
+xrandr --output Displayport-1 --primary --auto
+xrandr --output Displayport-2 --right-of Displayport-1 --rotate right --auto
 # Run Awesome
 exec /usr/bin/awesome
