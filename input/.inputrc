@@ -66,6 +66,11 @@ $endif
 
 # allow ctrl + backslash to delete last word
 "\C-h": backward-kill-word
+
+# allow ctrl + p and ctrl + n to navigate bash history
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+
 $endif
 
 # Turn Bell of
