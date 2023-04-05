@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Inspired by ThePrimeagen and saccarosium
+if [[ $# -eq 1 ]]; then
+    selected="$1" && [[ "$selected" == '.' ]] && selected="$PWD"
+else
+  selected=$((find ~/ ~/git/ ~/Documents/DHBW/Wirtschaftsinformatik/1.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/2.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/3.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/4.Semester/ -mindepth 1 -maxdepth 1 -type d; tmux ls) | fzf)
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+selected_name_t=${selected_name:0:7}
+
+if [[ -n $TMUX ]]; then
+  tmux switch-client -t "$selected_name_t" \
+  || tmux new-session -ds "$selected_name_t" -c "$selected" \
+  && tmux switch-client -t "$selected_name_t"
+elif [[ -z $TMUX ]]; then
+  tmux new-session -s "$selected_name_t" -c "$selected" \
+  || tmux attach -t "$selected_name_t"
+fi
