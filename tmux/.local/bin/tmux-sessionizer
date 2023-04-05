@@ -4,7 +4,7 @@
 if [[ $# -eq 1 ]]; then
     selected="$1" && [[ "$selected" == '.' ]] && selected="$PWD"
 else
-  selected=$((find ~/ ~/git/ ~/Documents/DHBW/Wirtschaftsinformatik/1.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/2.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/3.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/4.Semester/ -mindepth 1 -maxdepth 1 -type d; tmux ls) | fzf)
+  selected=$((tmux ls; find ~/ ~/git/ ~/Documents/DHBW/Wirtschaftsinformatik/1.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/2.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/3.Semester/ ~/Documents/DHBW/Wirtschaftsinformatik/4.Semester/ -mindepth 1 -maxdepth 1 -type d) | fzf)
 fi
 
 selected_name=$(basename "$selected" | tr . _)
