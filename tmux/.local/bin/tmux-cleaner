@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 tmux switch-client -t "Default"
-sleep 5
 
 for s in $(tmux list-sessions -F '#{session_name}'); do
   if [[ $s != Default ]]; then
