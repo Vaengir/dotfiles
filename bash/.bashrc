@@ -106,9 +106,6 @@ eval "$(zoxide init bash --cmd j)"
 # Cargo Setup
 . "$HOME/.cargo/env"
 
-# Gradle Setup
-export PATH=$PATH:/opt/gradle/gradle-7.6/bin
-
 # Go Setup
 export PATH=$PATH:/usr/local/go/bin
 
