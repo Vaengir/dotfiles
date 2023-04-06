@@ -117,6 +117,7 @@ shopt -s cdspell
 
 # Fzf setup
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS="--margin=5% --padding=2% --border"
 
 # Auto start tmux
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
