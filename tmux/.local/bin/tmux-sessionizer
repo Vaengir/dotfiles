@@ -16,3 +16,18 @@ if [[ -n $TMUX ]]; then
 elif [[ -z $TMUX ]]; then
   tmux new-session -s "$selected_name_t" -c "$selected" || tmux attach -t "$selected_name_t"
 fi
+
+if [[ $selected_name_t != Default ]]; then
+  tmux rename-window -t "$selected_name_t:1" Neovim
+  tmux new-window -t "$selected_name_t:2" -c "$selected"
+  tmux rename-window -t "$selected_name_t:2" Bash
+  tmux new-window -t "$selected_name_t:3" -c "$selected"
+  tmux rename-window -t "$selected_name_t:3" Run
+  tmux kill-pane -a -t "$selected_name_t:3"
+  tmux split-window -t "$selected_name_t:3" -h -c "$selected"
+  tmux select-window -t "$selected_name_t:1"
+  tmux send-keys -t "$selected_name_t:1" "v" Enter
+else
+  tmux new-window -t "Default:2" -c $HOME
+  tmux select-window -t "Default:1"
+fi
