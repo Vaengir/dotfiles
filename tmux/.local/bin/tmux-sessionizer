@@ -11,16 +11,20 @@ selected_name=$(basename "$selected" | tr . _)
 
 selected_name_t=${selected_name:0:7}
 
+if [[ -z $selected_name_t ]]; then
+  exit 130
+fi
+
+tmux has-session -t $selected_name_t 2>/dev/null
+session_exists=$?
+
 if [[ -n $TMUX ]]; then
   tmux switch-client -t "$selected_name_t" &> /dev/null || tmux new-session -ds "$selected_name_t" -c "$selected" && tmux switch-client -t "$selected_name_t" &> /dev/null
 elif [[ -z $TMUX ]]; then
   tmux new-session -s "$selected_name_t" -c "$selected" &> /dev/null || tmux attach -t "$selected_name_t" &> /dev/null
 fi
 
-if [[ -z $selected_name_t ]]; then
-  exit 130
-fi
-if [[ $selected_name_t != Default ]]; then
+if [[ $session_exists != 0 ]]; then
   tmux rename-window -t "$selected_name_t:1" Neovim &> /dev/null
   tmux new-window -t "$selected_name_t:2" -c "$selected" &> /dev/null
   tmux rename-window -t "$selected_name_t:2" Bash &> /dev/null
@@ -31,6 +35,5 @@ if [[ $selected_name_t != Default ]]; then
   tmux select-window -t "$selected_name_t:1" &> /dev/null
   tmux send-keys -t "$selected_name_t:1" "v" Enter &> /dev/null
 else
-  tmux new-window -t "Default:2" -c $HOME &> /dev/null
-  tmux select-window -t "Default:1" &> /dev/null
+  tmux select-window -t "$selected_name_t:1" &> /dev/null
 fi
