@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-tmux switch-client -t "Default"
+tmux switch-client -t "Default:1"
 
-for s in $(tmux list-sessions -F '#{session_name}'); do
-  if [[ $s != Default ]]; then
-    tmux kill-session -t $s
-  fi
-done
+tmux list-sessions | grep -v attached | awk 'BEGIN{FS=":"}{print $1}' | xargs -n 1 tmux kill-session -t || echo No sessions to kill
