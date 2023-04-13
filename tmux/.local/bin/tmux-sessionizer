@@ -12,22 +12,25 @@ selected_name=$(basename "$selected" | tr . _)
 selected_name_t=${selected_name:0:7}
 
 if [[ -n $TMUX ]]; then
-  tmux switch-client -t "$selected_name_t" || tmux new-session -ds "$selected_name_t" -c "$selected" && tmux switch-client -t "$selected_name_t"
+  tmux switch-client -t "$selected_name_t" &> /dev/null || tmux new-session -ds "$selected_name_t" -c "$selected" && tmux switch-client -t "$selected_name_t" &> /dev/null
 elif [[ -z $TMUX ]]; then
-  tmux new-session -s "$selected_name_t" -c "$selected" || tmux attach -t "$selected_name_t"
+  tmux new-session -s "$selected_name_t" -c "$selected" &> /dev/null || tmux attach -t "$selected_name_t" &> /dev/null
 fi
 
+if [[ -z $selected_name_t ]]; then
+  exit 130
+fi
 if [[ $selected_name_t != Default ]]; then
-  tmux rename-window -t "$selected_name_t:1" Neovim
-  tmux new-window -t "$selected_name_t:2" -c "$selected"
-  tmux rename-window -t "$selected_name_t:2" Bash
-  tmux new-window -t "$selected_name_t:3" -c "$selected"
-  tmux rename-window -t "$selected_name_t:3" Run
-  tmux kill-pane -a -t "$selected_name_t:3"
-  tmux split-window -t "$selected_name_t:3" -h -c "$selected"
-  tmux select-window -t "$selected_name_t:1"
-  tmux send-keys -t "$selected_name_t:1" "v" Enter
+  tmux rename-window -t "$selected_name_t:1" Neovim &> /dev/null
+  tmux new-window -t "$selected_name_t:2" -c "$selected" &> /dev/null
+  tmux rename-window -t "$selected_name_t:2" Bash &> /dev/null
+  tmux new-window -t "$selected_name_t:3" -c "$selected" &> /dev/null
+  tmux rename-window -t "$selected_name_t:3" Run &> /dev/null
+  tmux kill-pane -a -t "$selected_name_t:3" &> /dev/null
+  tmux split-window -t "$selected_name_t:3" -h -c "$selected" &> /dev/null
+  tmux select-window -t "$selected_name_t:1" &> /dev/null
+  tmux send-keys -t "$selected_name_t:1" "v" Enter &> /dev/null
 else
-  tmux new-window -t "Default:2" -c $HOME
-  tmux select-window -t "Default:1"
+  tmux new-window -t "Default:2" -c $HOME &> /dev/null
+  tmux select-window -t "Default:1" &> /dev/null
 fi
