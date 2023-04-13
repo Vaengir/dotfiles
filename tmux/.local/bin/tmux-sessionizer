@@ -9,7 +9,10 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
+# Formatting for max length
 selected_name_t=${selected_name:0:7}
+# Formatting for existing Tmux sessions to not include anything but session name
+selected_name_t=${selected_name_t%:*}
 
 if [[ -z $selected_name_t ]]; then
   exit 130
