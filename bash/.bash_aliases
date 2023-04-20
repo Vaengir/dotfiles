@@ -50,6 +50,7 @@ alias h="history | grep"
 # Some git functions
 alias gs="git status"
 alias gp="git push"
+alias gsu="git submodule update --remote"
 gcom() {
 	git add "$1"
 	git commit -m "$2"
