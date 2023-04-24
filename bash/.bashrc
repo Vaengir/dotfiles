@@ -101,6 +101,7 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
 # Zoxide setup
+export _ZO_EXCLUDE_DIRS=$_ZO_EXCLUDE_DIRS:/*:$HOME/.*:/etc/*:$HOME/Downloads/
 eval "$(zoxide init bash --cmd j)"
 
 # Cargo Setup
