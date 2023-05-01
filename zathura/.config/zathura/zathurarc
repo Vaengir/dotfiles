@@ -10,7 +10,7 @@ set selection-clipboard   clipboard
 set adjust-open "best-fit"
 set statusbar-h-padding 0
 set statusbar-v-padding 0
-set show-scrollbars     false
+set guioptions "hc"
 set page-padding 5
 
 # NORD THEME
