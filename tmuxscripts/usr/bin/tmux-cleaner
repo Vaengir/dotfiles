@@ -1,5 +1,37 @@
 #!/usr/bin/env bash
 
-tmux switch-client -t "Default:1"
+_self="${0##*/}"
+_currentSession=""
 
-tmux list-sessions | grep -v attached | awk 'BEGIN{FS=":"}{print $1}' | xargs -n 1 tmux kill-session -t || echo No sessions to kill
+usage() {
+  echo "Usage: $_self [-c|-a]"
+}
+
+if [[ $1 == "" ]]; then
+  usage
+  exit
+fi
+
+while getopts 'ca' OPTION; do
+  case "$OPTION" in
+    c)
+      _currentSession=$(tmux list-sessions | grep attached | awk 'BEGIN{FS=":"}{print $1}')
+      tmux switch-client -t "Default:1"
+      if [[ $_currentSession != "Default" ]]; then
+        $_currentSession | xargs -n 1 tmux kill-session -t || echo No session to kill
+      else
+        echo "Can't kill Default"
+      fi
+      ;;
+    a)
+      tmux switch-client -t "Default:1"
+      tmux list-sessions | grep -v attached | awk 'BEGIN{FS=":"}{print $1}' | xargs -r -n 1 tmux kill-session -t || echo No sessions to kill
+      ;;
+    *)
+      usage
+      exit 1
+      ;;
+  esac
+done
+
+shift "$(($OPTIND -1))"
