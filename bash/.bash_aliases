@@ -14,6 +14,9 @@ alias c="clear"
 alias rwlan="sudo systemctl restart NetworkManager"
 alias taskManager="htop"
 alias addWifi="sudo nmcli --ask device wifi connect"
+format() {
+  latexindent -s -wd "$1"
+}
 
 # Directory aliases
 alias home="cd ~"
