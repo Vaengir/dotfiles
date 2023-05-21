@@ -15,7 +15,7 @@ alias rwlan="sudo systemctl restart NetworkManager"
 alias taskManager="htop"
 alias addWifi="sudo nmcli --ask device wifi connect"
 format() {
-  latexindent -s -wd "$1"
+  find "$1" -name "*.tex" | xargs latexindent -s -wd
 }
 
 # Directory aliases
