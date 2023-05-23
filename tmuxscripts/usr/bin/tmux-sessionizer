@@ -31,10 +31,6 @@ if [[ $session_exists != 0 ]]; then
   tmux rename-window -t "$selected_name_t:1" Neovim &> /dev/null
   tmux new-window -t "$selected_name_t:2" -c "$selected" &> /dev/null
   tmux rename-window -t "$selected_name_t:2" Bash &> /dev/null
-  tmux new-window -t "$selected_name_t:3" -c "$selected" &> /dev/null
-  tmux rename-window -t "$selected_name_t:3" Run &> /dev/null
-  tmux kill-pane -a -t "$selected_name_t:3" &> /dev/null
-  tmux split-window -t "$selected_name_t:3" -h -c "$selected" &> /dev/null
   tmux select-window -t "$selected_name_t:1" &> /dev/null
   tmux send-keys -t "$selected_name_t:1" "v" Enter &> /dev/null
 else
