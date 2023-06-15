@@ -5,6 +5,6 @@ chosen=$(printf "  Power Off\n  Restart\n  Lock" | rofi -dmenu -i -them
 case "$chosen" in
 	"  Power Off") poweroff ;;
 	"  Restart") reboot ;;
-	"  Lock") i3lock -i ~/git/AwesomeWM/awesome/themes/nord/lockscreen.jpg ;;
+	"  Lock") i3lock-fancy -gp ;;
 	*) exit 1 ;;
 esac
