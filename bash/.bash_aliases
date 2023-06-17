@@ -36,6 +36,9 @@ alias ld='cd -'
 # mkdir alias
 alias mkdir="mkdir -p"
 
+# Get current battery charge
+alias bat="cat /sys/class/power_supply/BAT1/capacity"
+
 # Tmux Shortcuts
 alias ta="tmux at"
 alias td="tmux detach"
