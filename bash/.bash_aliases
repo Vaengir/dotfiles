@@ -1,7 +1,7 @@
 # Permanent aliases
 
 # List aliases
-alias ll="ls -l --color=auto"
+alias ll="ls -l --color=auto --group-directories-first"
 alias la="ll -a"
 
 # Shortcuts for ease of use
