@@ -67,6 +67,9 @@ export LANG=C.UTF-8
 export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/*:$HOME/work/*/*:/home
 eval "$(zoxide init bash --cmd j)"
 
+# exa color setup
+export EXA_COLORS="ur=37:uw=37:gr=37:gw=37:tr=37:tw=37:sn=37:uu=32:un=33:da=37"
+
 # Cargo Setup
 . "$HOME/.cargo/env"
 
