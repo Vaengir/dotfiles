@@ -1,6 +1,7 @@
 # Permanent aliases
 
 # List aliases
+alias ls="exa --icons --group-directories-first --sort=type --no-permissions --octal-permissions -B"
 alias ll="ls -l --color=auto --group-directories-first"
 alias la="ll -a"
 
