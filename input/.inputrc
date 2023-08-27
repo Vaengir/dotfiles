@@ -73,5 +73,7 @@ $endif
 
 $endif
 
+set completion-ignore-case
+
 # Turn Bell of
 set bell-style none
