@@ -55,7 +55,7 @@ alias xamppLogs="cat /opt/lampp/logs/php_error_log"
 alias h="history | grep"
 
 # Some git functions
-alias gs="git status"
+alias gs="git status -sb"
 alias gp="git push"
 alias gsu="git submodule update --remote"
 gcom() {
