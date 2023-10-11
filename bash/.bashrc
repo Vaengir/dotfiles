@@ -63,8 +63,8 @@ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 # Export to support all
 export PATH="/home/weiberle/.local/bin:$PATH"
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
+export LC_ALL=en_DK.utf8
+export LANG=en_DK.utf8
 
 # Zoxide setup
 export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/*:$HOME/work/*/*:/home
