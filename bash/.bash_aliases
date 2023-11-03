@@ -76,3 +76,9 @@ lazyg() {
 mkdircd () {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
+
+# Check for latest releases
+
+latest_release () {
+  git ls-remote --refs --sort="version:refname" --tags https://github.com/$@ | cut -d/ -f3-|tail -n1
+}
