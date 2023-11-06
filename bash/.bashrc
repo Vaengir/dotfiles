@@ -58,6 +58,9 @@ sudo() {
   fi
 }
 
+# Set XDG_RUNTIME_DIR
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
 # Export to support all
 export PATH="/home/weiberle/.local/bin:$PATH"
 export LC_ALL=en_DK.utf8
