@@ -46,6 +46,15 @@ alias td="tmux detach"
 alias tl="tmux ls"
 alias tks="tmux kill-server"
 
+# Streamlink Shortcut
+strlnk() {
+  streamlink -p mpv "$1" best
+}
+
+twstrlnk() {
+  streamlink -p mpv --twitch-disable-ads https://www.twitch.tv/$1 best
+}
+
 # Xampp Shortcuts
 alias xamppControl="sudo /opt/lampp/lampp"
 alias xamppManage="cd /opt/lampp; sudo ./manager-linux-x64.run; cd"
