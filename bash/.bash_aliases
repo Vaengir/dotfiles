@@ -56,29 +56,29 @@ alias h="history | grep"
 
 # Some git functions
 alias gs="git status -sb"
+alias gd="git diff"
 alias gp="git push"
 alias gsu="git submodule update --remote"
 gcom() {
-	git add "$1"
-	git commit -m "$2"
-	}
+  git add "$1"
+  git commit -m "$2"
+  }
 gcoma() {
-	git add .
-	git commit -m "$1"
-	}
+  git add .
+  git commit -m "$1"
+  }
 lazyg() {
-	git add .
-	git commit -m "$1"
-	git push
+  git add .
+  git commit -m "$1"
+  git push
 }
 
 # mkdircd function
-mkdircd () {
+mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
 
 # Check for latest releases
-
-latest_release () {
+latest_release() {
   git ls-remote --refs --sort="version:refname" --tags https://github.com/$@ | cut -d/ -f3-|tail -n1
 }
