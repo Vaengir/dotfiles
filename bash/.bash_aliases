@@ -65,6 +65,7 @@ alias h="history | grep"
 
 # Some git functions
 alias gs="git status -sb"
+alias gd="git diff"
 alias gp="git push"
 alias gsu="git submodule update --remote"
 gcom() {
