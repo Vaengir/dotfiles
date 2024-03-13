@@ -46,7 +46,7 @@ if ! shopt -oq posix; then
 fi
 
 # make nala and apt interchangeable
-apt() { 
+apt() {
   command nala "$@"
 }
 sudo() {
@@ -67,7 +67,7 @@ export LC_ALL=en_DK.utf8
 export LANG=en_DK.utf8
 
 # Zoxide setup
-export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/*:$HOME/work/*/*:/home
+export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/*:$HOME/vaengir/*/*:/home
 eval "$(zoxide init bash --cmd j)"
 
 # exa color setup
