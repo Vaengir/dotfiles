@@ -67,7 +67,7 @@ export LC_ALL=en_DK.utf8
 export LANG=en_DK.utf8
 
 # Zoxide setup
-export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/*:$HOME/work/*/*
+export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/*:$HOME/vaengir/*/*
 eval "$(zoxide init bash --cmd j)"
 
 # exa color setup
