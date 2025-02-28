@@ -1,4 +1,5 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
+source ~/.bash_profile
 
 # If not running interactively, don't do anything
 case $- in
