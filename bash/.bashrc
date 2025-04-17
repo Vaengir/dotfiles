@@ -73,10 +73,6 @@ export PATH="/home/weiberle/.local/bin:$PATH"
 export LC_ALL=en_DK.utf8
 export LANG=en_DK.utf8
 
-# Zoxide setup
-export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/branches:$HOME/personal/*/hooks:$HOME/personal/*/info:$HOME/personal/*/objects:$HOME/personal/*/refs:$HOME/personal/*/worktrees:$HOME/personal/*/*/*:$HOME/vaengir/*/branches:$HOME/vaengir/*/hooks:$HOME/vaengir/*/info:$HOME/vaengir/*/objects:$HOME/vaengir/*/refs:$HOME/vaengir/*/worktrees:$HOME/vaengir/*/*/*:/home
-eval "$(zoxide init bash --cmd j)"
-
 # exa color setup
 export EXA_COLORS="ur=37:uw=37:gr=37:gw=37:tr=37:tw=37:sn=37:uu=32:un=33:da=37"
 
@@ -103,6 +99,10 @@ fi
 
 # Emacs setup
 export PATH=$PATH:~/.config/emacs/bin
+
+# Zoxide setup
+export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/branches:$HOME/personal/*/hooks:$HOME/personal/*/info:$HOME/personal/*/objects:$HOME/personal/*/refs:$HOME/personal/*/worktrees:$HOME/personal/*/*/*:$HOME/vaengir/*/branches:$HOME/vaengir/*/hooks:$HOME/vaengir/*/info:$HOME/vaengir/*/objects:$HOME/vaengir/*/refs:$HOME/vaengir/*/worktrees:$HOME/vaengir/*/*/*:/home
+eval "$(zoxide init bash --cmd j)"
 
 # Run neofetch on startup
 # neofetch
