@@ -18,7 +18,7 @@ while getopts 'ca' OPTION; do
       _currentSession=$(tmux list-sessions | grep attached | awk 'BEGIN{FS=":"}{print $1}')
       tmux switch-client -t "Default:1"
       if [[ $_currentSession != "Default" ]]; then
-        $_currentSession | xargs -n 1 tmux kill-session -t || echo No session to kill
+        tmux kill-session -t "$_currentSession" || echo No session to kill
       else
         echo "Can't kill Default"
       fi
