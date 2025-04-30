@@ -1,0 +1,148 @@
+#+TITLE: Væñgír's GNU Emacs Config
+#+AUTHOR: Væñgír <vaengir@gmx.de>
+#+DESCRIPTION: Væñgír's personal Emacs config.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+* TABLE OF CONTENTS :toc:
+- [[#package-manager][PACKAGE MANAGER]]
+- [[#evil-mode][EVIL MODE]]
+- [[#window-settings][WINDOW SETTINGS]]
+- [[#font][FONT]]
+- [[#org-adjustments][ORG ADJUSTMENTS]]
+- [[#theme][THEME]]
+- [[#line-numbers][LINE NUMBERS]]
+- [[#backup-files][BACKUP FILES]]
+- [[#space-indents][SPACE INDENTS]]
+
+* PACKAGE MANAGER
+
+#+begin_src emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives
+    '("melpa" . "https://melpa.org/packages/") t)
+  (package-initialize)
+  (package-refresh-contents)
+#+end_src
+
+* EVIL MODE
+
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'evil)
+    (package-install 'evil))
+  (unless (package-installed-p 'evil-collection)
+    (package-install 'evil-collection))
+
+  (use-package evil
+    :init
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-vsplit-window-right t)
+    (setq evil-split-window-below t)
+    (evil-mode))
+  (use-package evil-collection
+    :after evil
+    :config
+    (setq evil-collection-mode-list '(dashboard dired ibuffer))
+    (evil-collection-init))
+
+  (unless (package-installed-p 'general)
+    (package-install 'general))
+  (use-package general
+    :config
+    (general-evil-setup)
+
+    (general-create-definer vaengir/leader-keys
+      :states '(normal insert visual emacs)
+      :keymaps 'override
+      :prefix "SPC"
+      :global-prefix "M-SPC")
+    (vaengir/leader-keys
+      "c" '(kill-current-buffer :wk "Close Buffer")))
+#+end_src
+
+* WINDOW SETTINGS
+
+#+begin_src emacs-lisp
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+#+end_src
+
+* FONT
+
+#+begin_src emacs-lisp
+  (set-face-attribute 'default nil
+    :font "Hack Nerd Font Mono"
+    :height 110
+    :weight 'medium)
+  (set-face-attribute 'variable-pitch nil
+    :font "Hack Nerd Font"
+    :height 120
+    :weight 'medium)
+  (set-face-attribute 'fixed-pitch nil
+    :font "Hack Nerd Font Mono"
+    :height 110
+    :weight 'medium)
+  ;; Makes commented text and keywords italics.
+  ;; This is working in emacsclient but not emacs.
+  ;; Your font must have an italic face available.
+  (set-face-attribute 'font-lock-comment-face nil
+    :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil
+    :slant 'italic)
+
+  ;; This sets the default font on all graphical frames created after restarting Emacs.
+  ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
+  ;; are not right unless I also add this method of setting the default font.
+  (add-to-list 'default-frame-alist '(font . "Hack Nerd Font Mono:11"))
+
+  ;; Uncomment the following line if line spacing needs adjusting.
+  (setq-default line-spacing 0.12)
+#+end_src
+
+* ORG ADJUSTMENTS
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'toc-org)
+    (package-install 'toc-org))
+
+  (use-package toc-org
+    :commands toc-org-enable
+    :init (add-hook 'org-mode-hook 'toc-org-enable))
+
+  (unless (package-installed-p 'org-bullets)
+    (package-install 'org-bullets))
+
+  (add-hook 'org-mode-hook 'org-indent-mode)
+  (use-package org-bullets)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+#+end_src
+
+* THEME
+
+#+begin_src emacs-lisp
+  (unless (package-installed-p 'nord-theme)
+    (package-install 'nord-theme))
+  (load-theme 'nord t)
+#+end_src
+
+* LINE NUMBERS
+
+#+begin_src emacs-lisp
+  (global-display-line-numbers-mode)
+  (setq display-line-numbers 'relative)
+#+end_src
+
+* BACKUP FILES
+
+#+begin_src emacs-lisp
+  (setq make-backup-files nil)
+#+end_src
+
+* SPACE INDENTS
+
+#+begin_src emacs-lisp
+  (setq-default indent-tabs-mode t)
+  (setq-default tab-width 2)
+#+end_src
