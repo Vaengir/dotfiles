@@ -7,6 +7,9 @@
 * TABLE OF CONTENTS :toc:
 - [[#package-manager][PACKAGE MANAGER]]
 - [[#evil-mode][EVIL MODE]]
+  - [[#setup][Setup]]
+  - [[#evil-keybinds][Evil Keybinds]]
+  - [[#helper-functions][Helper Functions]]
 - [[#window-settings][WINDOW SETTINGS]]
 - [[#font][FONT]]
 - [[#org-adjustments][ORG ADJUSTMENTS]]
@@ -27,6 +30,8 @@
 
 * EVIL MODE
 
+** Setup
+
 #+begin_src emacs-lisp
   (unless (package-installed-p 'evil)
     (package-install 'evil))
@@ -46,20 +51,77 @@
     :config
     (setq evil-collection-mode-list '(dashboard dired ibuffer))
     (evil-collection-init))
+#+end_src
 
+** Evil Keybinds
+
+*** General Setup
+
+#+begin_src emacs-lisp
   (unless (package-installed-p 'general)
     (package-install 'general))
   (use-package general
     :config
     (general-evil-setup)
+#+end_src
 
+*** Better Evil Keymaps
+
+#+begin_src emacs-lisp
+  (general-define-key
+   :states '(normal visual)
+   :keymaps 'global-map
+   "C-u" 'vaengir/c-u-center
+   "C-d" 'vaengir/c-d-center
+   "n" 'vaengir/n-center
+   "N" 'vaengir/N-center
+   )
+#+end_src
+
+*** Leader Key Setup
+
+#+begin_src emacs-lisp
     (general-create-definer vaengir/leader-keys
       :states '(normal insert visual emacs)
       :keymaps 'override
       :prefix "SPC"
       :global-prefix "M-SPC")
     (vaengir/leader-keys
-      "c" '(kill-current-buffer :wk "Close Buffer")))
+      "c" '(kill-current-buffer :wk "Close Buffer")
+  		"w" '(save-buffer :wk "Save Buffer")
+  		"q" '(quit-window :wk "Quit Window")
+  		"r" '((lambda () (interactive) (load-file "~/.config/emacs/init.el")) :wk "Reload Emacs Config")
+  		))
+#+end_src
+
+** Helper Functions
+
+*** Better Navigation
+
+Move up by half a page and center the cursor
+#+begin_src emacs-lisp
+  (defun vaengir/c-u-center ()
+    "Jump down half a page and center cursor on screen"
+    (interactive)
+    (let ((original-line (line-number-at-pos)))
+      (evil-scroll-up (window-height))
+      (goto-char (point-min))
+      (forward-line (1- original-line))
+      (recenter -1)
+      (move-to-window-line nil)))
+#+end_src
+
+Move down by half a page and center the cursor
+#+begin_src emacs-lisp
+    (defun vaengir/c-d-center ()
+      "Jump down half a page and center cursor on screen"
+      (interactive)
+      (let ((current-line (line-number-at-pos)))
+        (evil-scroll-down (window-height))
+        (goto-char (point-min))
+        (forward-line (1- current-line))
+        (recenter 0)
+        (move-to-window-line nil)))
 #+end_src
 
 * WINDOW SETTINGS
