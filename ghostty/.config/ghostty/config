@@ -1,7 +1,7 @@
 theme = nord
 
 font-family = Hack Nerd Font Mono
-font-size = 11
+font-size = 16
 cursor-style = block
 cursor-style-blink = false
 
