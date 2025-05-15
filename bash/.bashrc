@@ -97,6 +97,9 @@ if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
   tmux attach -t Default || tmux >/dev/null 2>&1
 fi
 
+# Git completion
+source /usr/share/git/completion/git-completion.bash
+
 # Emacs setup
 export PATH=$PATH:~/.config/emacs/bin
 
