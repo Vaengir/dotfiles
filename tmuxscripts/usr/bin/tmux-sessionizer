@@ -10,7 +10,8 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 
 # Formatting for max length
-selected_name_t=${selected_name:0:7}
+#  TODO: Use git base dir as start for name <2025-05-25>
+selected_name_t=${selected_name:0:40}
 # Formatting for existing Tmux sessions to not include anything but session name
 selected_name_t=${selected_name_t%:*}
 
