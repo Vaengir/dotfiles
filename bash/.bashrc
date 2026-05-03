@@ -93,8 +93,8 @@ shopt -s cdspell
 export FZF_DEFAULT_OPTS="--margin=5% --padding=2% --border"
 
 # Auto start tmux
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-  tmux attach -t Default || tmux >/dev/null 2>&1
+if [ -x "$(command -v tmux)" ] && [ -z "${TMUX}" ]; then
+  /home/vaengir/vaengir/rost_sessionizer/main/target/release/rost_sessionizer startup
 fi
 
 # Git completion
@@ -104,7 +104,6 @@ source /usr/share/git/completion/git-completion.bash
 export PATH=$PATH:~/.config/emacs/bin
 
 # Zoxide setup
-export _ZO_EXCLUDE_DIRS=/*/:$HOME/.*:/etc/*:$HOME/Downloads/:$HOME/personal/*/branches:$HOME/personal/*/hooks:$HOME/personal/*/info:$HOME/personal/*/objects:$HOME/personal/*/refs:$HOME/personal/*/worktrees:$HOME/personal/*/*/*:$HOME/vaengir/*/branches:$HOME/vaengir/*/hooks:$HOME/vaengir/*/info:$HOME/vaengir/*/objects:$HOME/vaengir/*/refs:$HOME/vaengir/*/worktrees:$HOME/vaengir/*/*/*:/home
 eval "$(zoxide init bash --cmd j)"
 
 # Run neofetch on startup
