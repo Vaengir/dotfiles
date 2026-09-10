@@ -22,7 +22,7 @@ hl.monitor({
 
 local terminal = "ghostty"
 local browser = "firefox"
-local fileManager = "pcmanfm"
+local fileManager = "env GDK_BACKEND=x11 pcmanfm"
 local menu = "wofi --show drun"
 
 -------------------
