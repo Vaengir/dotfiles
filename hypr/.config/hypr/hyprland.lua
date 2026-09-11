@@ -150,8 +150,14 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("emacsclient -c -a emacs"))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Pictures/Screenshots -f screenshot-$(date +%s).png"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprshot -m output -o ~/Pictures/Screenshots -f screenshot-$(date +%s).png"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("hyprshot -m region -o ~/Media/Screenshots -f screenshot-$(date +%s).png"))
+hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(
+    "pkill -SIGINT wf-recorder && notify-send 'Recording stopped' || wf-recorder -g \"$(slurp)\" -f ~/Media/Recordings/recording-$(date +%s).mp4"
+))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m output -o ~/Media/Screenshots -f screenshot-$(date +%s).png"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(
+    "pkill -SIGINT wf-recorder && notify-send 'Recording stopped' || wf-recorder -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') -f ~/Media/Recordings/recording-$(date +%s).mp4"
+))
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle", }))
 hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ action = "toggle", }))
