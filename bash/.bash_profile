@@ -8,6 +8,21 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+# --- XDG base directories (must come before .bashrc is sourced) ---
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# --- Relocated program directories ---
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export npm_config_cache="$XDG_CACHE_HOME/npm"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -25,8 +40,11 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. "$HOME/.cargo/env"
-export GTK2_RC_FILES=/home/weiberle/.gtkrc-2.0
+
+
+. "$CARGO_HOME/env"
+
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 SSH_ENV="$HOME/.ssh/agent-environment"
 
