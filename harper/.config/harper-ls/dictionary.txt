@@ -1,5 +1,43 @@
+Adiletten
+After Sun
+Badehosen
+Birkenstock
+Brooks
+Brustgurt
+Continental
+Deo
 E11
+Flasche
+Garminladekabel
+Geldbeutel
+Gesichtscreme
+Handyladekabel
+Hemd
+Klamotten
+Kopfhörer
+Kulturbeutel
+Kurze Jogginghosen
 Leonie
+Oneblade
+Parfüm
+Pullover
+Rasierschaum
+Rucksack
+Salomon
+Schicke Hose
+Schlafanzug
+Schlüssel
+Schuhe
+Socken
+Sonnencreme
+T-Shirts
+Unterhosen
+Zahnbürste
 cli
+fzf
+rost
+sessionizer
+stdin
+stdout
 todo
 worktrees
