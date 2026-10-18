@@ -10,13 +10,7 @@ alias vim="nvim"
 alias vi="vim"
 alias v="vi"
 alias s="sudo shutdown now"
-alias uni="ssh wi21139@login.dhbw-stuttgart.de"
-alias rwlan="sudo systemctl restart NetworkManager"
 alias taskManager="htop"
-alias addWifi="sudo nmcli --ask device wifi connect"
-format() {
-  find "$1" -name "*.tex" | xargs latexindent -s -wd
-}
 
 # Directory aliases
 alias home="cd ~"
@@ -36,9 +30,6 @@ alias ld='cd -'
 # mkdir alias
 alias mkdir="mkdir -p"
 
-# Get current battery charge
-alias bat="cat /sys/class/power_supply/BAT1/capacity"
-
 # Tmux Shortcuts
 alias ta="tmux at"
 alias td="tmux detach"
@@ -53,11 +44,6 @@ strlnk() {
 twstrlnk() {
   streamlink -p mpv --twitch-disable-ads https://www.twitch.tv/$1 best
 }
-
-# Xampp Shortcuts
-alias xamppControl="sudo /opt/lampp/lampp"
-alias xamppManage="cd /opt/lampp; sudo ./manager-linux-x64.run; cd"
-alias xamppLogs="cat /opt/lampp/logs/php_error_log"
 
 # Show command line history
 alias h="history | grep"
@@ -84,9 +70,4 @@ lazyg() {
 # mkdircd function
 mkdircd() {
   mkdir -p "$@" && eval cd "\"\$$#\"";
-}
-
-# Check for latest releases
-latest_release() {
-  git ls-remote --refs --sort="version:refname" --tags https://github.com/$@ | cut -d/ -f3-|tail -n1
 }
