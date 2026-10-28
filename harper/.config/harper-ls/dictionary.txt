@@ -6,6 +6,7 @@ Brooks
 Brustgurt
 Continental
 Deo
+Dir
 E11
 Flasche
 Garminladekabel
@@ -34,6 +35,7 @@ T-Shirts
 Unterhosen
 Zahnbürste
 cli
+frecency
 fzf
 rost
 sessionizer
