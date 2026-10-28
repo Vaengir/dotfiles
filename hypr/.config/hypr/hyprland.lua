@@ -223,7 +223,8 @@ hl.workspace_rule({ workspace = "name:KeepassXC", monitor = "DP-3", on_created_e
 hl.workspace_rule({ workspace = "7", monitor = "DP-3", })
 hl.workspace_rule({ workspace = "name:Thunderbird", monitor = "DP-3", on_created_empty = "thunderbird", })
 hl.workspace_rule({ workspace = "name:Spotify", monitor = "DP-3", on_created_empty = "spotify-launcher", })
-hl.workspace_rule({ workspace = "name:SecondScreen", monitor = "DP-2", default = true, on_created_empty = browser, })
+hl.workspace_rule({ workspace = "name:SecondScreen", monitor = "DP-2", default = true, on_created_empty = "[workspace name:SecondScreen silent] " .. browser, })
+
 -- Ignore maximize requests from apps. You'll probably like this.
 hl.window_rule({
     name = "windowrule-1",
