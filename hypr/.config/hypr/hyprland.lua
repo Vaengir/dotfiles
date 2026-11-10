@@ -214,16 +214,38 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true,
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
-hl.workspace_rule({ workspace = "name:Browser", monitor = "DP-3", on_created_empty = browser, })
-hl.workspace_rule({ workspace = "name:Terminal", monitor = "DP-3", default = true, on_created_empty = terminal, })
+hl.workspace_rule({ workspace = "name:Browser", monitor = "DP-3", })
+hl.workspace_rule({ workspace = "name:Terminal", monitor = "DP-3", default = true, })
 hl.workspace_rule({ workspace = "3", monitor = "DP-3", })
-hl.workspace_rule({ workspace = "name:Obsidian", monitor = "DP-3", on_created_empty = "obsidian", })
+hl.workspace_rule({ workspace = "name:Obsidian", monitor = "DP-3", })
 hl.workspace_rule({ workspace = "5", monitor = "DP-3", })
-hl.workspace_rule({ workspace = "name:KeepassXC", monitor = "DP-3", on_created_empty = "keepassxc", })
+hl.workspace_rule({ workspace = "name:KeepassXC", monitor = "DP-3", })
 hl.workspace_rule({ workspace = "7", monitor = "DP-3", })
-hl.workspace_rule({ workspace = "name:Thunderbird", monitor = "DP-3", on_created_empty = "thunderbird", })
-hl.workspace_rule({ workspace = "name:Spotify", monitor = "DP-3", on_created_empty = "spotify-launcher", })
-hl.workspace_rule({ workspace = "name:SecondScreen", monitor = "DP-2", default = true, on_created_empty = "[workspace name:SecondScreen silent] " .. browser, })
+hl.workspace_rule({ workspace = "name:Thunderbird", monitor = "DP-3", })
+hl.workspace_rule({ workspace = "name:Spotify", monitor = "DP-3", })
+hl.workspace_rule({ workspace = "name:SecondScreen", monitor = "DP-2", default = true, })
+
+-- Start apps if they aren't open on workspace already
+local on_empty = {
+    Browser      = browser,
+    Terminal     = terminal,
+    Obsidian     = "obsidian",
+    KeepassXC    = "keepassxc",
+    Thunderbird  = "thunderbird",
+    Spotify      = "spotify-launcher",
+    SecondScreen = "[workspace name:SecondScreen silent] " .. browser,
+}
+
+hl.on("workspace.created", function(ws)
+    if not ws.is_empty then
+        return
+    end
+
+    local cmd = on_empty[ws.name]
+    if cmd then
+        hl.dispatch(hl.dsp.exec_cmd(cmd))
+    end
+end)
 
 -- Ignore maximize requests from apps. You'll probably like this.
 hl.window_rule({
