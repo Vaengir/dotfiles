@@ -228,7 +228,7 @@ hl.workspace_rule({ workspace = "name:SecondScreen", monitor = "DP-2", default =
 -- Start apps if they aren't open on workspace already
 local on_empty = {
     Browser      = browser,
-    Terminal     = terminal,
+    Terminal     = "[workspace name:Terminal silent] " .. terminal,
     Obsidian     = "obsidian",
     KeepassXC    = "keepassxc",
     Thunderbird  = "thunderbird",
